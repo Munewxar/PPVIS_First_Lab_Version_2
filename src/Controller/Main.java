@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Main extends JPanel implements ActionListener {
 
@@ -13,10 +15,25 @@ public class Main extends JPanel implements ActionListener {
     private Timer timer = new Timer(20, this);
     private JFrame frame;
     private Map mapObject;
+    private Player player;
 
     public Main(JFrame frame){
         this.frame = frame;
         mapObject = new Map();
+        player = new Player(frame, mapObject);
+        timer.start();
+
+        frame.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                player.keyPressed(e);
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                player.keyReleased(e);
+            }
+        });
     }
 
     public void paint(Graphics g){
@@ -31,10 +48,15 @@ public class Main extends JPanel implements ActionListener {
             }
         }
 
+        g.drawImage(player.getPlayerImage(),
+                player.getpX(), player.getpY(),
+                64, 64,
+                null);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        player.move(-1);
         repaint();
     }
 }

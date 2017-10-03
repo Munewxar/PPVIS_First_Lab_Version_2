@@ -77,6 +77,19 @@ public class Map {
         }
     }
 
+    public Cell getCell(int mapX, int mapY){
+
+        for (int yCounter = 0; yCounter < 15; yCounter++){
+            for (int xCounter = 0; xCounter < 30; xCounter++){
+                if(map.get(yCounter).get(xCounter).getCoordinateX() == mapX &&
+                        map.get(yCounter).get(xCounter).getCoordinateY() == mapY )
+                    return map.get(yCounter).get(xCounter);
+            }
+        }
+
+        return null;
+    }
+
     public ArrayList<ArrayList<Cell>> getMap() {
         return map;
     }
