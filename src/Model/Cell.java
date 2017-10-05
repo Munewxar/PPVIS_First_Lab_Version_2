@@ -10,7 +10,7 @@ public class Cell {
     private int coordinateX;
     private int coordinateY;
 
-    Cell(Image image, boolean isFree, int type, int coordinateX, int coordinateY){
+    public Cell(Image image, boolean isFree, int type, int coordinateX, int coordinateY){
         this.image = image;
         this.isFree = isFree;
         this.type = type;

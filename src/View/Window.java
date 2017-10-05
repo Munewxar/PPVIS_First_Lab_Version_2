@@ -3,11 +3,9 @@ package View;
 import Controller.Main;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class Window {
     private JFrame frame;
-    private Image background;
 
     private JFrame buildFrame(){
         frame = new JFrame();
@@ -17,10 +15,6 @@ public class Window {
 
        frame.add(new Main(frame));
 
-        return frame;
-    }
-
-    public JFrame getFrame() {
         return frame;
     }
 

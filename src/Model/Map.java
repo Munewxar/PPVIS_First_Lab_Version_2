@@ -13,6 +13,10 @@ public class Map {
     private static final int EMPTY = 0;
     private static final int FLOOR = 1;
     private static final int STAIRS = 2;
+    private static final int BOOK = 3;
+    private static final int DOOR = 4;
+
+    private static final int TILE_SIZE = 64;
 
     public Map(){
         map = new ArrayList<>();
@@ -41,22 +45,30 @@ public class Map {
 
             while (scanner.hasNextInt() && scanner.hasNextLine()){
 
-                //System.out.println(scanner.nextInt());
-
                 switch (scanner.nextInt()){
                     case 0:
                         map.get(ySizeCounter).set(xSizeCounter, new Cell(null, true, EMPTY,
-                                xSizeCounter * 64, ySizeCounter * 64));
+                                xSizeCounter * TILE_SIZE, ySizeCounter * TILE_SIZE));
                         break;
 
                     case 1:
-                        map.get(ySizeCounter).set(xSizeCounter, new Cell(new ImageIcon("floor.png").getImage(),
-                                false, FLOOR, xSizeCounter * 64, ySizeCounter * 64));
+                        map.get(ySizeCounter).set(xSizeCounter, new Cell(new ImageIcon("floor2.png").getImage(),
+                                false, FLOOR, xSizeCounter * TILE_SIZE, ySizeCounter * TILE_SIZE));
                         break;
 
                     case 2:
                         map.get(ySizeCounter).set(xSizeCounter, new Cell(new ImageIcon("stairs.png").getImage(),
-                                true, STAIRS, xSizeCounter * 64, ySizeCounter * 64));
+                                true, STAIRS, xSizeCounter * TILE_SIZE, ySizeCounter * TILE_SIZE));
+                        break;
+
+                    case 3:
+                        map.get(ySizeCounter).set(xSizeCounter, new Cell(new ImageIcon("book.png").getImage(),
+                                true, BOOK, xSizeCounter * TILE_SIZE, ySizeCounter * TILE_SIZE));
+                        break;
+
+                    case 4:
+                        map.get(ySizeCounter).set(xSizeCounter, new Cell(new ImageIcon("door.png").getImage(),
+                                true, DOOR, xSizeCounter * TILE_SIZE, ySizeCounter * TILE_SIZE));
                         break;
 
                     default:

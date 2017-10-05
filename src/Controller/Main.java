@@ -20,7 +20,7 @@ public class Main extends JPanel implements ActionListener {
     public Main(JFrame frame){
         this.frame = frame;
         mapObject = new Map();
-        player = new Player(frame, mapObject);
+        player = new Player(mapObject);
         timer.start();
 
         frame.addKeyListener(new KeyAdapter() {
@@ -57,6 +57,7 @@ public class Main extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         player.move(-1);
+        player.fall();
         repaint();
     }
 }
